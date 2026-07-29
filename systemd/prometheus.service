@@ -1,0 +1,36 @@
+[Unit]
+Description=Prometheus Monitoring Server
+Documentation=https://prometheus.io/docs/introduction/overview/
+Wants=network-online.target node_exporter.service alertmanager.service
+After=network-online.target node_exporter.service alertmanager.service
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+
+ExecStart=/usr/local/bin/prometheus \
+  --config.file=/etc/prometheus/prometheus.yml \
+  --storage.tsdb.path=/var/lib/prometheus \
+  --storage.tsdb.retention.time=15d \
+  --web.listen-address=0.0.0.0:9090 \
+  --web.enable-lifecycle
+
+ExecReload=/bin/kill -HUP $MAINPID
+
+Restart=on-failure
+RestartSec=5s
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+ReadWritePaths=/var/lib/prometheus
+
+[Install]
+WantedBy=multi-user.target

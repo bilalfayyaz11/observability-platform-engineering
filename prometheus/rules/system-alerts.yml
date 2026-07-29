@@ -1,0 +1,68 @@
+groups:
+  - name: linux_system_alerts
+    interval: 15s
+    rules:
+      - alert: HighCPUUsage
+        expr: |
+          100 - (
+            avg by (instance) (
+              rate(node_cpu_seconds_total{mode="idle"}[2m])
+            ) * 100
+          ) > 80
+        for: 2m
+        labels:
+          severity: warning
+          component: compute
+        annotations:
+          summary: "High CPU usage detected on {{ $labels.instance }}"
+          description: "CPU utilisation has remained above 80% for more than 2 minutes. Current value: {{ printf \"%.2f\" $value }}%."
+
+      - alert: HighMemoryUsage
+        expr: |
+          (
+            1 -
+            (
+              node_memory_MemAvailable_bytes
+              /
+              node_memory_MemTotal_bytes
+            )
+          ) * 100 > 85
+        for: 5m
+        labels:
+          severity: critical
+          component: memory
+        annotations:
+          summary: "High memory usage detected on {{ $labels.instance }}"
+          description: "Memory utilisation has remained above 85% for more than 5 minutes. Current value: {{ printf \"%.2f\" $value }}%."
+
+      - alert: RootFilesystemSpaceLow
+        expr: |
+          (
+            node_filesystem_avail_bytes{
+              mountpoint="/",
+              fstype!~"tmpfs|overlay|squashfs"
+            }
+            /
+            node_filesystem_size_bytes{
+              mountpoint="/",
+              fstype!~"tmpfs|overlay|squashfs"
+            }
+          ) * 100 < 10
+        for: 1m
+        labels:
+          severity: critical
+          component: storage
+        annotations:
+          summary: "Root filesystem space is low on {{ $labels.instance }}"
+          description: "Available space on the root filesystem has remained below 10% for more than 1 minute. Current available space: {{ printf \"%.2f\" $value }}%."
+
+      - alert: NodeExporterDown
+        expr: |
+          up{job="node_exporter"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          component: monitoring
+        annotations:
+          summary: "Node Exporter is unavailable on {{ $labels.instance }}"
+          description: "Prometheus has been unable to scrape Node Exporter for more than 1 minute."
