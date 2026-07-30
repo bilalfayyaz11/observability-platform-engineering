@@ -1,31 +1,79 @@
 # Observability Platform Engineering
 
-Production-focused monitoring, metrics, telemetry, and reliability engineering implementations for infrastructure and applications.
+Production-focused implementations for monitoring, logging, telemetry, alerting, and reliability engineering across Linux infrastructure and distributed applications.
 
 ## Implementations
 
-| # | What Was Built | Key Technologies | Level |
-|---|----------------|------------------|-------|
-| 1 | [Prometheus Host and Application Monitoring](./prometheus-host-application-monitoring) | Prometheus, Node Exporter, Python, PromQL, systemd | Advanced |
+| # | Implementation | Technologies | Level |
+|---|----------------|--------------|-------|
+| 1 | [Prometheus Host and Application Monitoring](./prometheus-host-application-monitoring/) | Prometheus, Node Exporter, Python, PromQL, systemd | Advanced |
+| 2 | [Prometheus Alert Routing](./prometheus-alert-routing/) | Prometheus, Alertmanager, Node Exporter, PromQL, Python, systemd | Advanced |
+| 3 | [Centralized Log Pipeline](./centralized-log-pipeline/) | Elasticsearch, Logstash, Filebeat, Python, Grok, systemd | Advanced |
 
 ## Engineering Focus
 
-This repository demonstrates practical observability engineering across Linux infrastructure, application services, platform components, and operational telemetry.
+This repository contains production-oriented observability implementations that demonstrate monitoring, centralized logging, telemetry collection, alert routing, and operational reliability practices commonly used by Platform Engineering, SRE, DevOps, and Infrastructure teams.
 
-Each implementation emphasizes reliable service management, secure metric exposure, configuration validation, troubleshooting, reproducibility, and production-oriented monitoring practices.
+Each implementation is designed as a standalone deployment that emphasizes reproducibility, service management, configuration validation, troubleshooting, Linux administration, and production-ready operational workflows.
 
----
+## Coverage
 
-## Prometheus Alert Routing
+- Infrastructure Monitoring
+- Application Monitoring
+- Metrics Collection
+- Alert Routing
+- Centralized Logging
+- Log Collection
+- Log Processing
+- Log Enrichment
+- Log Search
+- Operational Telemetry
+- Incident Investigation
+- Linux Service Management
+- Configuration Validation
+- Production Troubleshooting
 
-Linux infrastructure monitoring and incident delivery using Prometheus, Alertmanager, Node Exporter, PromQL, Python, and systemd.
+## Repository Structure
 
-[View implementation](./prometheus-alert-routing/)
+    observability-platform-engineering/
+    ├── prometheus-host-application-monitoring/
+    ├── prometheus-alert-routing/
+    ├── centralized-log-pipeline/
+    └── README.md
 
----
+## Technology Stack
 
-## Centralized Log Pipeline
+- Prometheus
+- Alertmanager
+- Node Exporter
+- Elasticsearch
+- Logstash
+- Filebeat
+- Python
+- PromQL
+- Grok
+- Linux
+- systemd
 
-An end-to-end Elastic Stack implementation that collects application and Linux logs with Filebeat, processes them through Logstash, and stores them in Elasticsearch for centralized search and operational analysis.
+## Skills Demonstrated
 
-[View implementation](./centralized-log-pipeline/)
+- Observability Platform Engineering
+- Infrastructure Monitoring
+- Centralized Logging
+- Metrics Engineering
+- Alert Engineering
+- Elastic Stack Administration
+- Prometheus Administration
+- Log Pipeline Development
+- Log Parsing and Transformation
+- Linux Systems Administration
+- Service Hardening
+- Configuration Management
+- Production Validation
+- Incident Response Support
+- Troubleshooting
+
+## Future Roadmap
+
+Additional production-grade implementations will continue expanding this repository with distributed tracing, dashboarding, telemetry pipelines, synthetic monitoring, service discovery, OpenTelemetry, Kibana visualization, Grafana dashboards, and automated incident response workflows.
+
