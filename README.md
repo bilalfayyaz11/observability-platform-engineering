@@ -21,3 +21,11 @@ Each implementation emphasizes reliable service management, secure metric exposu
 Linux infrastructure monitoring and incident delivery using Prometheus, Alertmanager, Node Exporter, PromQL, Python, and systemd.
 
 [View implementation](./prometheus-alert-routing/)
+
+---
+
+## Centralized Log Pipeline
+
+An end-to-end Elastic Stack implementation that collects application and Linux logs with Filebeat, processes them through Logstash, and stores them in Elasticsearch for centralized search and operational analysis.
+
+[View implementation](./centralized-log-pipeline/)

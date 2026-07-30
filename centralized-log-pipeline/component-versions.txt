@@ -1,0 +1,3 @@
+Elasticsearch: 9.4.4
+Logstash: 1:9.4.4-1
+Filebeat: 9.4.4
