@@ -77,3 +77,9 @@ Each implementation is designed as a standalone deployment that emphasizes repro
 
 Additional production-grade implementations will continue expanding this repository with distributed tracing, dashboarding, telemetry pipelines, synthetic monitoring, service discovery, OpenTelemetry, Kibana visualization, Grafana dashboards, and automated incident response workflows.
 
+
+## Infrastructure as Code
+
+| What Was Built | Key Technologies | Level |
+|----------------|------------------|-------|
+| [Terraform-Managed Docker Infrastructure](./terraform-docker-infrastructure) | Terraform, HCL, Docker, Nginx, Apache, Networking, Persistent Storage, State Management | Advanced |

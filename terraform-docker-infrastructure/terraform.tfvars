@@ -1,0 +1,9 @@
+environment                = "development"
+network_name               = "terraform-network"
+volume_name                = "my-custom-volume"
+web_port                   = 8080
+restart_policy             = "unless-stopped"
+nginx_image                = "nginx:alpine"
+application_image          = "httpd:alpine"
+web_container_name         = "terraform-nginx"
+application_container_name = "terraform-application"
