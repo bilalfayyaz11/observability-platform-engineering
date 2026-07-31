@@ -1,0 +1,15 @@
+[tool.pytest.ini_options]
+testpaths = ["."]
+python_files = ["test_*.py"]
+addopts = [
+    "--strict-markers",
+    "--strict-config",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["calculator"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 95
