@@ -1,0 +1,25 @@
+[Unit]
+Description=Prometheus Metric Type Demonstration Application
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/prometheus-metric-types
+
+ExecStart=/home/ubuntu/prometheus-metric-types/.venv/bin/python \
+  /home/ubuntu/prometheus-metric-types/sample_app.py
+
+Restart=on-failure
+RestartSec=5s
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=read-only
+ProtectSystem=strict
+ReadWritePaths=/home/ubuntu/prometheus-metric-types
+
+[Install]
+WantedBy=multi-user.target

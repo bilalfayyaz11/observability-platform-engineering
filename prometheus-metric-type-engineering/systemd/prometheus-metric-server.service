@@ -1,0 +1,28 @@
+[Unit]
+Description=Prometheus Metric Type Analysis Server
+Wants=network-online.target prometheus-metric-app.service
+After=network-online.target prometheus-metric-app.service
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/prometheus-metric-types
+
+ExecStart=/usr/local/bin/prometheus \
+  --config.file=/home/ubuntu/prometheus-metric-types/prometheus.yml \
+  --storage.tsdb.path=/home/ubuntu/prometheus-metric-types/data \
+  --storage.tsdb.retention.time=6h \
+  --web.listen-address=0.0.0.0:9090
+
+Restart=on-failure
+RestartSec=5s
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=read-only
+ProtectSystem=strict
+ReadWritePaths=/home/ubuntu/prometheus-metric-types/data
+
+[Install]
+WantedBy=multi-user.target

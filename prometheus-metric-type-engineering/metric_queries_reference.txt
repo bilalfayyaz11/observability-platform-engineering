@@ -1,0 +1,58 @@
+# Counter Queries
+demo_http_requests_total
+sum by (endpoint) (demo_http_requests_total)
+sum by (endpoint) (rate(demo_http_requests_total[2m]))
+sum(rate(demo_http_errors_total[2m])) / clamp_min(sum(rate(demo_http_requests_total[2m])), 0.001)
+
+# Gauge Queries
+demo_cpu_usage_percent
+demo_memory_usage_bytes
+demo_active_requests
+demo_queue_depth
+avg_over_time(demo_cpu_usage_percent[2m])
+max_over_time(demo_memory_usage_bytes[2m])
+
+# Histogram Queries
+demo_http_request_duration_seconds_bucket
+histogram_quantile(
+  0.95,
+  sum by (le) (
+    rate(demo_http_request_duration_seconds_bucket[2m])
+  )
+)
+sum(rate(demo_http_request_duration_seconds_sum[2m]))
+/
+sum(rate(demo_http_request_duration_seconds_count[2m]))
+
+# Summary Queries
+demo_processing_duration_seconds_sum
+demo_processing_duration_seconds_count
+sum(rate(demo_processing_duration_seconds_sum[2m]))
+/
+sum(rate(demo_processing_duration_seconds_count[2m]))
+
+# Advanced Queries
+sum by (endpoint) (
+  rate(demo_http_requests_total[2m])
+)
+
+(
+  sum(rate(demo_http_errors_total[2m]))
+  /
+  clamp_min(sum(rate(demo_http_requests_total[2m])), 0.001)
+) * 100
+
+(
+  sum(
+    rate(
+      demo_http_request_duration_seconds_bucket{le="1.0"}[2m]
+    )
+  )
+  /
+  clamp_min(
+    sum(rate(demo_http_request_duration_seconds_count[2m])),
+    0.001
+  )
+) * 100
+
+count({__name__=~"demo_.*"})
