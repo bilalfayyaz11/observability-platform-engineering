@@ -1,0 +1,35 @@
+PROMETHEUS VALIDATION ANALYSIS
+
+1. BASELINE
+result=accepted
+category=valid_configuration
+meaning=Prometheus configuration syntax and semantic checks passed
+
+2. BROKEN YAML
+result=rejected
+category=yaml_or_configuration_syntax
+evidence_file=broken-syntax-promtool.txt
+meaning=Parser cannot construct a valid Prometheus configuration
+
+3. DUPLICATE / INVALID CONFIGURATION
+result=rejected
+category=configuration_semantics
+evidence_file=logical-errors-promtool.txt
+meaning=Structurally valid YAML can still violate Prometheus configuration constraints
+
+4. INVALID SCRAPE TIMEOUT
+result=rejected
+category=scrape_timing_constraint
+meaning=scrape_timeout must not exceed scrape_interval
+
+5. MALFORMED PROMQL
+result=rejected
+category=promql_syntax
+evidence_file=broken-rules-promtool.txt
+meaning=Rule expression cannot be parsed
+
+6. MISSING METRIC REFERENCE
+result=accepted
+category=runtime_data_availability
+evidence_file=missing-metric-valid-rule.txt
+meaning=A metric being absent does not make a syntactically valid PromQL expression invalid

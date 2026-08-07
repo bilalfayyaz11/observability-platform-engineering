@@ -1,0 +1,4 @@
+*.log
+prometheus-diagnostics-*.log
+*.tar.gz
+tmp/

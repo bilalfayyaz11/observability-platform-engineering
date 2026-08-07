@@ -1,0 +1,19 @@
+groups:
+
+  - name: troubleshooting-rules
+
+    rules:
+
+      - alert: NodeExporterDown
+        expr: up{job="node-exporter"} == 0
+        for: 2m
+
+        labels:
+          severity: warning
+
+        annotations:
+          summary: "Node Exporter target is unavailable"
+          description: "Prometheus currently reports up={{ $value }} for the Node Exporter target."
+
+      - record: troubleshooting:up_targets
+        expr: sum(up)

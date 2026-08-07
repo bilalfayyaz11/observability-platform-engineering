@@ -1,0 +1,15 @@
+groups:
+
+  - name: missing-metric-example
+
+    rules:
+
+      - alert: MissingMetricReference
+        expr: cpu_usage > 0.8
+        for: 5m
+
+        labels:
+          severity: warning
+
+        annotations:
+          summary: "Referenced series may not currently exist"

@@ -1,0 +1,4 @@
+broken-target	http://127.0.0.1:8080/metrics	down	Get "http://127.0.0.1:8080/metrics": dial tcp 127.0.0.1:8080: connect: connection refused
+invalid-config	http://invalid-hostname:9090/invalid/path	down	Get "http://invalid-hostname:9090/invalid/path": dial tcp: lookup invalid-hostname on 127.0.0.53:53: server misbehaving
+node-exporter	http://127.0.0.1:9100/metrics	up	
+prometheus	http://127.0.0.1:9090/metrics	up	

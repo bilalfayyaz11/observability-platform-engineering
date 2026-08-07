@@ -1,0 +1,2 @@
+node-exporter	http://127.0.0.1:9100/metrics	up	
+prometheus	http://127.0.0.1:9090/metrics	up	

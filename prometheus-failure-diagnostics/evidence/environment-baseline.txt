@@ -1,0 +1,5 @@
+prometheus_version=prometheus, version 3.13.1 (branch: HEAD, revision: 73ff57ce2b8161059ac7fe5188f03f1c3d22b29a)
+node_exporter_version=node_exporter, version 1.12.1 (branch: HEAD, revision: 6044da783597cc3b57aef7580ddcdcff58a4ee99)
+node_exporter_service=active
+broken_port_8080=expected_failure
+invalid_hostname=expected_dns_failure

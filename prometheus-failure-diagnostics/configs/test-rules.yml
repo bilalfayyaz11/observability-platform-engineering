@@ -1,0 +1,25 @@
+groups:
+
+  - name: troubleshooting-rules
+
+    rules:
+
+      - alert: MissingMetricReference
+        expr: cpu_usage > 0.8
+        for: 5m
+
+        labels:
+          severity: warning
+
+        annotations:
+          summary: "Metric may currently be absent"
+
+      - alert: InvalidSyntax
+        expr: invalid_metric_name{job=}
+        for: 2m
+
+        labels:
+          severity: critical
+
+        annotations:
+          summary: "This expression is intentionally invalid"
