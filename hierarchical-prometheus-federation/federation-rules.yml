@@ -1,0 +1,34 @@
+groups:
+  - name: cluster_aggregates
+    interval: 30s
+    rules:
+
+      - record: cluster:node_cpu_utilisation:avg1m
+        expr: |
+          1 - avg by (cluster) (
+            rate(node_cpu_seconds_total{mode="idle"}[1m])
+          )
+
+      - record: cluster:node_memory_available_bytes:avg
+        expr: |
+          avg by (cluster) (
+            node_memory_MemAvailable_bytes
+          )
+
+      - record: global:node_cpu_utilisation:avg1m
+        expr: |
+          avg(cluster:node_cpu_utilisation:avg1m)
+
+  - name: federation_health
+    interval: 30s
+    rules:
+
+      - alert: FederationTargetDown
+        expr: |
+          up{job=~"federate-.*"} == 0
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Federation target {{ $labels.instance }} is unreachable"
+          description: "Job {{ $labels.job }} has failed to scrape {{ $labels.instance }} for more than two minutes."

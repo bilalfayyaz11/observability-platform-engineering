@@ -1,0 +1,25 @@
+[Unit]
+Description=Synthetic Traffic Exporter - Cluster A
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+
+ExecStart=/opt/prometheus-federation/venv/bin/python \
+  /opt/prometheus-federation/traffic_simulator.py \
+  --port 8080 \
+  --seed 101
+
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target

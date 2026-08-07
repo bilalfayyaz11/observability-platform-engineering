@@ -1,0 +1,27 @@
+[Unit]
+Description=Prometheus - Global Federation
+Wants=network-online.target
+After=network-online.target prometheus-a.service prometheus-b.service
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+
+ExecStart=/usr/local/bin/prometheus \
+  --config.file=/etc/prometheus/federation/prometheus.yml \
+  --storage.tsdb.path=/var/lib/prometheus/federation \
+  --web.listen-address=127.0.0.1:9092 \
+  --web.enable-lifecycle
+
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/prometheus/federation
+
+[Install]
+WantedBy=multi-user.target
