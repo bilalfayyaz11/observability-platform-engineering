@@ -1,0 +1,15 @@
+PromQL aggregation validation
+
+Sum all CPU counters: PASS
+CPU grouped by mode: PASS
+CPU grouped by core: PASS
+Normalized load: PASS
+Top three network interfaces: PASS
+Bottom three filesystems: PASS
+Distinct CPU core count: PASS
+CPU cardinality matches Linux: PASS
+Range-query execution: PASS
+
+Observed CPU cores: 4
+Observed CPU modes: 8
+Range samples: 21

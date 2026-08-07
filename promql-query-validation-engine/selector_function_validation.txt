@@ -1,0 +1,16 @@
+PromQL selector and function validation
+
+Raw CPU selector: PASS
+CPU equality matcher: PASS
+CPU inequality matcher: PASS
+CPU regex matcher: PASS
+Filesystem regex exclusion: PASS
+Network regex exclusion: PASS
+CPU rate: PASS
+Network rate: PASS
+Network increase: PASS
+Memory percentage: PASS
+Filesystem percentage: PASS
+CPU utilization: PASS
+CPU range validation: PASS
+predict_linear: PASS

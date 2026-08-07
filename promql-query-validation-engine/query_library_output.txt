@@ -1,0 +1,156 @@
+
+============================================================
+CPU
+============================================================
+
+Description: Overall CPU utilization percentage
+PromQL:      100 - (avg(rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100)
+Result count: 1
+Values:
+{} => 3.6833333333333513
+PASS
+
+Description: CPU rate grouped by mode
+PromQL:      sum by (mode) (rate(node_cpu_seconds_total[5m])) * 100
+Result count: 8
+Values:
+{"mode":"idle"} => 385.2666666666666
+{"mode":"iowait"} => 0.014035087719297944
+{"mode":"irq"} => 0
+{"mode":"nice"} => 0
+{"mode":"softirq"} => 0.05263157894736841
+{"mode":"steal"} => 1.5263157894736836
+{"mode":"system"} => 6.856140350877194
+{"mode":"user"} => 5.0666666666666655
+PASS
+
+Description: CPU activity excluding idle and iowait
+PromQL:      sum by (cpu) (rate(node_cpu_seconds_total{mode!~"idle|iowait"}[5m]))
+Result count: 4
+Values:
+{"cpu":"0"} => 0.022877192982456128
+{"cpu":"1"} => 0.043228070175438595
+{"cpu":"2"} => 0.03901754385964913
+{"cpu":"3"} => 0.029894736842105255
+PASS
+
+============================================================
+MEMORY
+============================================================
+
+Description: Memory utilization percentage
+PromQL:      (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100
+Result count: 1
+Values:
+{"instance":"127.0.0.1:9100","job":"node_exporter"} => 8.894893137425196
+PASS
+
+Description: Available memory in GiB
+PromQL:      node_memory_MemAvailable_bytes / 1073741824
+Result count: 1
+Values:
+{"instance":"127.0.0.1:9100","job":"node_exporter"} => 14.085926055908203
+PASS
+
+Description: Predicted available memory one hour ahead
+PromQL:      predict_linear(node_memory_MemAvailable_bytes[30m], 3600)
+Result count: 1
+Values:
+{"instance":"127.0.0.1:9100","job":"node_exporter"} => 14814566919.165417
+PASS
+
+============================================================
+DISK
+============================================================
+
+Description: Filesystem utilization percentage
+PromQL:      (1 - (node_filesystem_free_bytes{fstype!~"tmpfs|devtmpfs|overlay|squashfs"} / node_filesystem_size_bytes{fstype!~"tmpfs|devtmpfs|overlay|squashfs"})) * 100
+Result count: 3
+Values:
+{"device":"/dev/nvme0n1p15","fstype":"vfat","instance":"127.0.0.1:9100","job":"node_exporter","mountpoint":"/boot/efi"} => 5.84986637836219
+{"device":"/dev/nvme0n1p16","fstype":"ext4","instance":"127.0.0.1:9100","job":"node_exporter","mountpoint":"/boot"} => 27.191410063004707
+{"device":"/dev/root","fstype":"ext4","instance":"127.0.0.1:9100","job":"node_exporter","mountpoint":"/"} => 29.12817617995739
+PASS
+
+Description: Aggregate disk read bytes per second
+PromQL:      sum(rate(node_disk_read_bytes_total[5m]))
+Result count: 1
+Values:
+{} => 172.4631578947368
+PASS
+
+Description: Aggregate disk write bytes per second
+PromQL:      sum(rate(node_disk_written_bytes_total[5m]))
+Result count: 1
+Values:
+{} => 9657.936842105262
+PASS
+
+Description: Average disk I/O utilization percentage
+PromQL:      avg(rate(node_disk_io_time_seconds_total[5m])) * 100
+Result count: 1
+Values:
+{} => 0.007017543859648972
+PASS
+
+============================================================
+NETWORK
+============================================================
+
+Description: Aggregate network receive bytes per second
+PromQL:      sum(rate(node_network_receive_bytes_total{device!~"lo|docker.*|br-.*|veth.*"}[5m]))
+Result count: 1
+Values:
+{} => 1383.4140350877192
+PASS
+
+Description: Aggregate network transmit bytes per second
+PromQL:      sum(rate(node_network_transmit_bytes_total{device!~"lo|docker.*|br-.*|veth.*"}[5m]))
+Result count: 1
+Values:
+{} => 4211.621052631578
+PASS
+
+Description: Aggregate network receive and transmit error rate
+PromQL:      sum(rate(node_network_receive_errs_total[5m])) + sum(rate(node_network_transmit_errs_total[5m]))
+Result count: 1
+Values:
+{} => 0
+PASS
+
+Description: Top three interfaces by receive rate
+PromQL:      topk(3, rate(node_network_receive_bytes_total[5m]))
+Result count: 3
+Values:
+{"device":"lo","instance":"127.0.0.1:9100","job":"node_exporter"} => 2218.056140350877
+{"device":"ens5","instance":"127.0.0.1:9100","job":"node_exporter"} => 1383.4140350877192
+{"device":"docker0","instance":"127.0.0.1:9100","job":"node_exporter"} => 0
+PASS
+
+============================================================
+ALERT THRESHOLDS
+============================================================
+
+Description: CPU utilization above 80 percent
+PromQL:      100 - (avg(rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+Result count: 0
+Values: no active result
+PASS
+
+Description: Memory utilization above 90 percent
+PromQL:      (1 - (node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes)) * 100 > 90
+Result count: 0
+Values: no active result
+PASS
+
+Description: Root filesystem utilization above 85 percent
+PromQL:      (1 - (node_filesystem_free_bytes{mountpoint="/"} / node_filesystem_size_bytes{mountpoint="/"})) * 100 > 85
+Result count: 0
+Values: no active result
+PASS
+
+Description: Any Prometheus target down
+PromQL:      up == 0
+Result count: 0
+Values: no active result
+PASS
