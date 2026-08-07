@@ -1,0 +1,18 @@
+Exporter Monitoring Script Validation
+
+System monitor: PASS
+CPU telemetry: PASS
+Memory telemetry: PASS
+Load telemetry: PASS
+
+MySQL monitor: PASS
+MySQL availability: PASS
+MySQL connections: PASS
+MySQL uptime: PASS
+MySQL query-rate collection: PASS
+
+Connectivity monitor: PASS
+Local Prometheus HTTP probe: PASS
+MySQL TCP probe: PASS
+Prometheus TCP probe: PASS
+MySQL Exporter TCP probe: PASS

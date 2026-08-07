@@ -1,0 +1,59 @@
+Prometheus Multi-Exporter Validation
+
+Validation time: 2026-08-07T13:41:10+00:00
+
+Services
+Prometheus: PASS
+Node Exporter: PASS
+MySQL: PASS
+MySQL Exporter: PASS
+Blackbox Exporter: PASS
+
+Exporter Endpoints
+Node Exporter 9100: PASS
+MySQL Exporter 9104: PASS
+Blackbox Exporter 9115: PASS
+Prometheus 9090: PASS
+MySQL 3306: PASS
+
+Prometheus Integration
+Prometheus job: PASS
+Node Exporter job: PASS
+MySQL Exporter job: PASS
+Blackbox HTTP job: PASS
+Blackbox TCP job: PASS
+
+System Telemetry
+CPU metrics: PASS
+Memory metrics: PASS
+Disk metrics: PASS
+Network metrics: PASS
+systemd metrics: PASS
+
+Database Telemetry
+mysql_up: PASS
+Connection metrics: PASS
+Uptime metrics: PASS
+Query metrics: PASS
+Query-rate metrics: PASS
+Generated database activity: PASS
+
+Synthetic Monitoring
+Local Prometheus HTTP probe: PASS
+MySQL TCP probe: PASS
+Prometheus TCP probe: PASS
+MySQL Exporter TCP probe: PASS
+
+Dynamic Workload Validation
+CPU response: PASS
+Memory response: PASS
+Disk response: PASS
+MySQL activity response: PASS
+
+Monitoring Interfaces
+System monitor: PASS
+MySQL monitor: PASS
+Connectivity monitor: PASS
+Unified dashboard: PASS
+
+Overall multi-exporter observability stack: PASS

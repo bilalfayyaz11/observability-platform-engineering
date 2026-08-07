@@ -1,0 +1,19 @@
+Exporter Workload Validation
+
+System telemetry
+CPU load response: PASS
+Memory load response: PASS
+Disk write response: PASS
+
+Database telemetry
+MySQL availability: PASS
+MySQL query counter: PASS
+MySQL query-rate response: PASS
+Database activity generation: PASS
+
+Cleanup
+CPU worker cleanup: PASS
+Memory worker cleanup: PASS
+Temporary disk file cleanup: PASS
+
+Overall workload observability: PASS
