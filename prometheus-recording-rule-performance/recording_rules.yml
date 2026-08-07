@@ -1,0 +1,103 @@
+groups:
+
+  - name: node_base
+    interval: 15s
+
+    rules:
+
+      - record: node:cpu_utilization:rate5m
+        expr: |
+          100 -
+          (
+            avg by (instance) (
+              rate(
+                node_cpu_seconds_total{
+                  job="node",
+                  mode="idle"
+                }[5m]
+              )
+            )
+            * 100
+          )
+
+      - record: node:memory_utilization:ratio
+        expr: |
+          1 -
+          (
+            sum by (instance) (
+              node_memory_MemAvailable_bytes{
+                job="node"
+              }
+            )
+            /
+            sum by (instance) (
+              node_memory_MemTotal_bytes{
+                job="node"
+              }
+            )
+          )
+
+      - record: node:disk_utilization:ratio
+        expr: |
+          1 -
+          (
+            sum by (instance) (
+              node_filesystem_avail_bytes{
+                job="node",
+                mountpoint="/"
+              }
+            )
+            /
+            sum by (instance) (
+              node_filesystem_size_bytes{
+                job="node",
+                mountpoint="/"
+              }
+            )
+          )
+
+      - record: node:network_throughput:rate5m_bytes
+        expr: |
+          rate(
+            node_network_receive_bytes_total{
+              job="node",
+              device!="lo"
+            }[5m]
+          )
+          +
+          rate(
+            node_network_transmit_bytes_total{
+              job="node",
+              device!="lo"
+            }[5m]
+          )
+
+  - name: node_composite
+    interval: 30s
+
+    rules:
+
+      - record: node:system_pressure:score
+        expr: |
+          (
+            node:cpu_utilization:rate5m
+            * 0.40
+          )
+          +
+          (
+            node:memory_utilization:ratio
+            * 100
+            * 0.35
+          )
+          +
+          (
+            node:disk_utilization:ratio
+            * 100
+            * 0.25
+          )
+
+      - record: node:network_throughput:rate5m_mbps
+        expr: |
+          node:network_throughput:rate5m_bytes
+          * 8
+          / 1000000

@@ -1,0 +1,18 @@
+Prometheus Base Recording Rule Validation
+
+Rule group: node_base
+Evaluation interval: 15s
+Rules loaded: 4
+
+node:cpu_utilization:rate5m: PASS
+node:memory_utilization:ratio: PASS
+node:disk_utilization:ratio: PASS
+node:network_throughput:rate5m_bytes: PASS
+
+CPU result range 0-100: PASS
+Memory result range 0-1: PASS
+Disk result range 0-1: PASS
+Loopback exclusion: PASS
+
+Rule evaluation health: PASS
+TSDB recording-rule output: PASS

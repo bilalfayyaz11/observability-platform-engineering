@@ -1,0 +1,29 @@
+Prometheus Recording Rule Hierarchy Validation
+
+Base layer
+node_base interval: 15s
+node_base rules: 4
+
+Composite layer
+node_composite interval: 30s
+node_composite rules: 2
+
+Base metric interface
+CPU aggregation per instance: PASS
+Memory aggregation per instance: PASS
+Disk aggregation per instance: PASS
+Consistent label contract: PASS
+
+Dependency isolation
+Composite layer uses recorded base metrics only: PASS
+Raw node metrics excluded from composite expressions: PASS
+
+Derived metrics
+node:system_pressure:score: PASS
+node:network_throughput:rate5m_mbps: PASS
+
+System pressure range 0-100: PASS
+Rule evaluation health: PASS
+All six recording rules: PASS
+
+Runtime label-matching issue detected and corrected: PASS

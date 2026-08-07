@@ -1,0 +1,17 @@
+Recording Rule Stack Baseline
+
+Prometheus service: PASS
+Node Exporter service: PASS
+
+Prometheus port 9090: PASS
+Node Exporter port 9100: PASS
+
+Prometheus scrape target: PASS
+Node Exporter scrape target: PASS
+
+CPU source metrics: PASS
+Memory source metrics: PASS
+Filesystem source metrics: PASS
+Network source metrics: PASS
+
+Recording-rule prerequisite telemetry: PASS

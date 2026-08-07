@@ -1,0 +1,17 @@
+Prometheus Recording Rule Health Validation
+
+Internal metrics
+prometheus_rule_evaluation_duration_seconds: PASS
+prometheus_rule_evaluation_failures_total: PASS
+prometheus_rule_group_last_duration_seconds: PASS
+
+Rule groups
+node_base: PASS
+node_composite: PASS
+
+Rules API health: PASS
+Runtime evaluation errors: 0
+Rule evaluation failures: 0
+Diagnostic script exit code: 0
+
+Overall rule health: PASS

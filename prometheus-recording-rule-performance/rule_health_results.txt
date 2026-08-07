@@ -1,0 +1,27 @@
+=====================================================
+PROMETHEUS RECORDING RULE HEALTH
+=====================================================
+
+----- prometheus_rule_evaluation_duration_seconds -----
+No p99 evaluation-duration data available yet.
+
+----- prometheus_rule_evaluation_failures_total -----
+group=/etc/prometheus/recording_rules.yml;node_base failures=0
+group=/etc/prometheus/recording_rules.yml;node_composite failures=0
+
+----- prometheus_rule_group_last_duration_seconds -----
+group=/etc/prometheus/recording_rules.yml;node_base last_duration_seconds=0.000928008
+group=/etc/prometheus/recording_rules.yml;node_composite last_duration_seconds=0.00050666
+
+===== RULE API HEALTH =====
+group=node_base interval=15 evaluation_time=0.001325346
+  rule=node:cpu_utilization:rate5m health=ok error=null
+  rule=node:memory_utilization:ratio health=ok error=null
+  rule=node:disk_utilization:ratio health=ok error=null
+  rule=node:network_throughput:rate5m_bytes health=ok error=null
+group=node_composite interval=30 evaluation_time=0.00049026
+  rule=node:system_pressure:score health=ok error=null
+  rule=node:network_throughput:rate5m_mbps health=ok error=null
+
+===== FINAL HEALTH VERDICT =====
+All rule groups healthy.

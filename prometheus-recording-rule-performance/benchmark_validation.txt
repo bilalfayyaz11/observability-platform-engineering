@@ -1,0 +1,18 @@
+Prometheus Recording Rule Benchmark Validation
+
+Iterations per query: 5
+
+CPU raw query: PASS
+CPU recording-rule query: PASS
+
+Memory raw query: PASS
+Memory recording-rule query: PASS
+
+System pressure raw query: PASS
+System pressure recording-rule query: PASS
+
+Six timing measurements: PASS
+Three pair comparisons: PASS
+Arithmetic mean calculation: PASS
+
+Raw versus recording-rule benchmark: PASS
