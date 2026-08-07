@@ -1,0 +1,14 @@
+Pushgateway Batch Alert Validation
+
+BatchJobFailed: PASS
+BatchJobHighErrorRate: PASS
+BatchJobNotRunRecently: PASS
+MaintenanceTasksFailed: PASS
+
+Prometheus rule syntax: PASS
+Prometheus configuration syntax: PASS
+Rule group loaded: PASS
+Pushgateway scrape health: PASS
+Health-check script: PASS
+
+Loaded alert rules: 4

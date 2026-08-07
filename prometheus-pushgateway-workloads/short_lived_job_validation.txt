@@ -1,0 +1,17 @@
+Pushgateway Short-Lived Job Validation
+
+Simple data-processing job: PASS
+Advanced processing job: PASS
+Scheduled maintenance job: PASS
+
+Pushgateway metric ingestion: PASS
+Prometheus scrape ingestion: PASS
+
+Simple job expected records: 1250
+Advanced job metric presence: PASS
+Maintenance metric presence: PASS
+
+Jobs terminated after execution: PASS
+Metrics remain available through Pushgateway: PASS
+
+Script to Pushgateway to Prometheus pipeline: PASS

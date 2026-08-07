@@ -1,0 +1,18 @@
+Pushgateway Metric Lifecycle Validation
+
+Temporary metric push: PASS
+Persistence file creation: PASS
+Persistence across Pushgateway restart: PASS
+Prometheus scrape recovery: PASS
+Persisted metric visible in Prometheus: PASS
+
+Temporary metric deletion: PASS
+
+Simple job cleanup: PASS
+Advanced job cleanup: PASS
+Maintenance job cleanup: PASS
+
+Pushgateway stale metric removal: PASS
+Prometheus cleanup propagation: PASS
+
+Push -> persist -> scrape -> delete lifecycle: PASS

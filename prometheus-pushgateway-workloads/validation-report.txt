@@ -1,0 +1,45 @@
+Prometheus Pushgateway Validation
+
+Validation time: 2026-08-07T13:54:57+00:00
+
+Services
+Prometheus: PASS
+Pushgateway: PASS
+
+Network
+Prometheus port 9090: PASS
+Pushgateway port 9091: PASS
+
+Prometheus Integration
+Pushgateway target health: PASS
+Pushgateway scrape metric: PASS
+
+Short-Lived Workloads
+Simple data-processing script: PASS
+Advanced processing script: PASS
+Scheduled maintenance script: PASS
+Pushgateway ingestion: PASS
+Prometheus ingestion: PASS
+
+Alerting
+BatchJobFailed: PASS
+BatchJobHighErrorRate: PASS
+BatchJobNotRunRecently: PASS
+MaintenanceTasksFailed: PASS
+Loaded rules: 4
+
+Persistence
+Pushgateway persistence configuration: PASS
+Persistence file: PASS
+Restart persistence validation: PASS
+
+Lifecycle
+Temporary metric deletion: PASS
+Batch metric cleanup: PASS
+Prometheus staleness propagation: PASS
+Stale metric cleanup: PASS
+
+Operational Interface
+Health-check script: PASS
+
+Overall Pushgateway short-lived workload pipeline: PASS
