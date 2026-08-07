@@ -1,0 +1,29 @@
+[Unit]
+Description=MinIO S3-Compatible Object Storage
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=minio
+Group=minio
+Type=simple
+
+EnvironmentFile=/etc/minio/minio.env
+
+ExecStart=/usr/local/bin/minio server \
+  /var/lib/minio \
+  --address 127.0.0.1:9000 \
+  --console-address 127.0.0.1:9001
+
+Restart=on-failure
+RestartSec=5
+
+LimitNOFILE=65536
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/minio
+
+[Install]
+WantedBy=multi-user.target

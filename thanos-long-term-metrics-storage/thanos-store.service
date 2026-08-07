@@ -1,0 +1,28 @@
+[Unit]
+Description=Thanos Store Gateway
+Wants=network-online.target
+After=network-online.target minio.service
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+
+ExecStart=/usr/local/bin/thanos store \
+  --data-dir=/var/lib/thanos/store \
+  --objstore.config-file=/etc/thanos/bucket.yml \
+  --grpc-address=127.0.0.1:10905 \
+  --http-address=127.0.0.1:10906 \
+  --sync-block-duration=5s
+
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/thanos/store
+
+[Install]
+WantedBy=multi-user.target

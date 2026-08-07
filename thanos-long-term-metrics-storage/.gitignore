@@ -1,0 +1,4 @@
+bucket.yml
+minio.env
+*.tar.gz
+downloads/

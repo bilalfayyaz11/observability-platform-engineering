@@ -1,0 +1,26 @@
+[Unit]
+Description=Thanos Unified Query
+Wants=network-online.target
+After=network-online.target thanos-sidecar.service thanos-store.service
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+
+ExecStart=/usr/local/bin/thanos query \
+  --http-address=127.0.0.1:10904 \
+  --grpc-address=127.0.0.1:10903 \
+  --endpoint=127.0.0.1:10901 \
+  --endpoint=127.0.0.1:10905
+
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target

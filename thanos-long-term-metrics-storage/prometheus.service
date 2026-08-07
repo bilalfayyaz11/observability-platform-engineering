@@ -1,0 +1,31 @@
+[Unit]
+Description=Prometheus Metrics Server
+Wants=network-online.target
+After=network-online.target node_exporter.service
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+
+ExecStart=/usr/local/bin/prometheus \
+  --config.file=/etc/prometheus/prometheus.yml \
+  --storage.tsdb.path=/var/lib/prometheus \
+  --storage.tsdb.min-block-duration=2h \
+  --storage.tsdb.max-block-duration=2h \
+  --storage.tsdb.retention.time=6h \
+  --web.listen-address=127.0.0.1:9090 \
+  --web.enable-admin-api \
+  --web.enable-lifecycle
+
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/prometheus
+
+[Install]
+WantedBy=multi-user.target

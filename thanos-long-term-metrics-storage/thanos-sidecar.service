@@ -1,0 +1,27 @@
+[Unit]
+Description=Thanos Sidecar
+Wants=network-online.target
+After=network-online.target prometheus.service minio.service
+
+[Service]
+User=prometheus
+Group=prometheus
+Type=simple
+
+ExecStart=/usr/local/bin/thanos sidecar \
+  --tsdb.path=/var/lib/prometheus \
+  --prometheus.url=http://127.0.0.1:9090 \
+  --objstore.config-file=/etc/thanos/bucket.yml \
+  --grpc-address=127.0.0.1:10901 \
+  --http-address=127.0.0.1:10902
+
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target
