@@ -1,0 +1,14 @@
+[Unit]
+Description=Prometheus Intensive Metrics Generator 4
+After=network-online.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+Type=simple
+ExecStart=/usr/bin/python3 /home/ubuntu/prometheus-retention/intensive_metrics.py 8084 generator-4
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
