@@ -1,0 +1,23 @@
+[Unit]
+Description=CI/CD Deployment Metrics Exporter
+After=network.target
+
+[Service]
+User=ubuntu
+Group=ubuntu
+Type=simple
+
+WorkingDirectory=/home/ubuntu/cicd-observability/metrics
+
+ExecStart=/home/ubuntu/cicd-observability/.venv/bin/python   /home/ubuntu/cicd-observability/metrics/deployment_metrics.py
+
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=false
+
+[Install]
+WantedBy=multi-user.target

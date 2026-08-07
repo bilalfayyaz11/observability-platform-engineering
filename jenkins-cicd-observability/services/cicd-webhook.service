@@ -1,0 +1,23 @@
+[Unit]
+Description=CI/CD Alert Webhook Receiver
+After=network.target
+
+[Service]
+User=cicd-webhook
+Group=cicd-webhook
+Type=simple
+
+ExecStart=/usr/bin/python3 /usr/local/bin/cicd-webhook-receiver
+
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+
+ReadWritePaths=/var/lib/cicd-webhook
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+*.log
+*.jar
+.venv/
+__pycache__/
+*.pyc
+
+*password*
+*credential*
+*secret*
+*.key
+*.pem
+
+jenkins-cli.jar
