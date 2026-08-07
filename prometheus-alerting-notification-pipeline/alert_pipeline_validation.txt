@@ -1,0 +1,19 @@
+Prometheus Alerting Pipeline Validation
+
+HighCPUUsage firing transition: PASS
+Prometheus active alert detection: PASS
+Alertmanager alert ingestion: PASS
+Webhook firing delivery: PASS
+
+CPU stress termination: PASS
+HighCPUUsage resolution transition: PASS
+Prometheus active alert clearance: PASS
+Alertmanager resolution handling: PASS
+Webhook resolved delivery: PASS
+
+Prometheus service: PASS
+Node Exporter service: PASS
+Alertmanager service: PASS
+Webhook receiver service: PASS
+
+End-to-end alert lifecycle: PASS
