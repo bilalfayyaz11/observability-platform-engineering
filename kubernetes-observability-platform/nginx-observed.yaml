@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: nginx-observed
+  name: nginx-observed
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx-observed
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: nginx-observed
+    spec:
+      containers:
+      - image: nginx:1.29.0
+        name: nginx
+        resources: {}
+status: {}
