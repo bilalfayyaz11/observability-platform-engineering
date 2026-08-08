@@ -1,0 +1,10 @@
+timestamp=2026-08-08T12:22:04Z
+
+[CPU]
+[{"metric":{"instance":"127.0.0.1:9100"},"value":[1786191724.671,"74.67239201439807"]}]
+
+[MEMORY]
+[{"metric":{"instance":"127.0.0.1:9100","job":"node-exporter"},"value":[1786191724.685,"9.358197863538031"]}]
+
+[LOAD]
+[{"metric":{"__name__":"node_load1","instance":"127.0.0.1:9100","job":"node-exporter"},"value":[1786191724.698,"1.32"]}]

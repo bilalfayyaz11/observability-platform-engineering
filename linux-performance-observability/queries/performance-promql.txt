@@ -1,0 +1,400 @@
+# ============================================================
+# CPU
+# ============================================================
+
+CPU_USAGE_PERCENT =
+100 - (
+  avg by (instance) (
+    rate(
+      node_cpu_seconds_total{
+        job="node-exporter",
+        mode="idle"
+      }[1m]
+    )
+  ) * 100
+)
+
+
+CPU_USAGE_BY_CORE_PERCENT =
+100 - (
+  avg by (instance, cpu) (
+    rate(
+      node_cpu_seconds_total{
+        job="node-exporter",
+        mode="idle"
+      }[1m]
+    )
+  ) * 100
+)
+
+
+CPU_USAGE_BY_MODE_PERCENT =
+sum by (instance, mode) (
+  rate(
+    node_cpu_seconds_total{
+      job="node-exporter"
+    }[1m]
+  )
+) * 100
+
+
+CPU_IOWAIT_PERCENT =
+avg by (instance) (
+  rate(
+    node_cpu_seconds_total{
+      job="node-exporter",
+      mode="iowait"
+    }[1m]
+  )
+) * 100
+
+
+CONTEXT_SWITCHES_PER_SECOND =
+rate(
+  node_context_switches_total{
+    job="node-exporter"
+  }[1m]
+)
+
+
+# ============================================================
+# LOAD
+# ============================================================
+
+LOAD_1M =
+node_load1{
+  job="node-exporter"
+}
+
+
+LOAD_5M =
+node_load5{
+  job="node-exporter"
+}
+
+
+LOAD_15M =
+node_load15{
+  job="node-exporter"
+}
+
+
+NORMALIZED_LOAD_1M =
+node_load1{
+  job="node-exporter"
+}
+/
+count without (cpu, mode) (
+  count without (mode) (
+    node_cpu_seconds_total{
+      job="node-exporter",
+      mode="idle"
+    }
+  )
+)
+
+
+# ============================================================
+# MEMORY
+# ============================================================
+
+MEMORY_USAGE_PERCENT =
+(
+  1 -
+  (
+    node_memory_MemAvailable_bytes{
+      job="node-exporter"
+    }
+    /
+    node_memory_MemTotal_bytes{
+      job="node-exporter"
+    }
+  )
+) * 100
+
+
+MEMORY_AVAILABLE_PERCENT =
+(
+  node_memory_MemAvailable_bytes{
+    job="node-exporter"
+  }
+  /
+  node_memory_MemTotal_bytes{
+    job="node-exporter"
+  }
+) * 100
+
+
+MEMORY_TOTAL_BYTES =
+node_memory_MemTotal_bytes{
+  job="node-exporter"
+}
+
+
+MEMORY_FREE_BYTES =
+node_memory_MemFree_bytes{
+  job="node-exporter"
+}
+
+
+MEMORY_AVAILABLE_BYTES =
+node_memory_MemAvailable_bytes{
+  job="node-exporter"
+}
+
+
+MEMORY_BUFFERS_BYTES =
+node_memory_Buffers_bytes{
+  job="node-exporter"
+}
+
+
+MEMORY_CACHED_BYTES =
+node_memory_Cached_bytes{
+  job="node-exporter"
+}
+
+
+SWAP_USAGE_PERCENT_SAFE =
+(
+  (
+    node_memory_SwapTotal_bytes{
+      job="node-exporter"
+    }
+    -
+    node_memory_SwapFree_bytes{
+      job="node-exporter"
+    }
+  )
+  /
+  clamp_min(
+    node_memory_SwapTotal_bytes{
+      job="node-exporter"
+    },
+    1
+  )
+) * 100
+
+
+# ============================================================
+# FILESYSTEM / DISK
+# ============================================================
+
+ROOT_FILESYSTEM_USAGE_PERCENT =
+100 *
+(
+  1 -
+  (
+    node_filesystem_avail_bytes{
+      job="node-exporter",
+      mountpoint="/",
+      fstype!~"tmpfs|overlay|squashfs|nsfs|ramfs"
+    }
+    /
+    node_filesystem_size_bytes{
+      job="node-exporter",
+      mountpoint="/",
+      fstype!~"tmpfs|overlay|squashfs|nsfs|ramfs"
+    }
+  )
+)
+
+
+FILESYSTEM_USAGE_PERCENT =
+100 *
+(
+  1 -
+  (
+    node_filesystem_avail_bytes{
+      job="node-exporter",
+      fstype!~"tmpfs|overlay|squashfs|nsfs|ramfs"
+    }
+    /
+    node_filesystem_size_bytes{
+      job="node-exporter",
+      fstype!~"tmpfs|overlay|squashfs|nsfs|ramfs"
+    }
+  )
+)
+
+
+DISK_READ_BYTES_PER_SECOND =
+rate(
+  node_disk_read_bytes_total{
+    job="node-exporter"
+  }[1m]
+)
+
+
+DISK_WRITE_BYTES_PER_SECOND =
+rate(
+  node_disk_written_bytes_total{
+    job="node-exporter"
+  }[1m]
+)
+
+
+DISK_IO_TIME_PERCENT =
+rate(
+  node_disk_io_time_seconds_total{
+    job="node-exporter"
+  }[1m]
+) * 100
+
+
+# ============================================================
+# NETWORK
+# ============================================================
+
+NETWORK_RECEIVE_BYTES_PER_SECOND =
+rate(
+  node_network_receive_bytes_total{
+    job="node-exporter",
+    device!="lo"
+  }[1m]
+)
+
+
+NETWORK_TRANSMIT_BYTES_PER_SECOND =
+rate(
+  node_network_transmit_bytes_total{
+    job="node-exporter",
+    device!="lo"
+  }[1m]
+)
+
+
+NETWORK_RECEIVE_PACKETS_PER_SECOND =
+rate(
+  node_network_receive_packets_total{
+    job="node-exporter",
+    device!="lo"
+  }[1m]
+)
+
+
+NETWORK_TRANSMIT_PACKETS_PER_SECOND =
+rate(
+  node_network_transmit_packets_total{
+    job="node-exporter",
+    device!="lo"
+  }[1m]
+)
+
+
+NETWORK_RECEIVE_ERRORS_PER_SECOND =
+rate(
+  node_network_receive_errs_total{
+    job="node-exporter",
+    device!="lo"
+  }[1m]
+)
+
+
+NETWORK_TRANSMIT_ERRORS_PER_SECOND =
+rate(
+  node_network_transmit_errs_total{
+    job="node-exporter",
+    device!="lo"
+  }[1m]
+)
+
+
+NETWORK_RECEIVE_DROPS_PER_SECOND =
+rate(
+  node_network_receive_drop_total{
+    job="node-exporter",
+    device!="lo"
+  }[1m]
+)
+
+
+NETWORK_TRANSMIT_DROPS_PER_SECOND =
+rate(
+  node_network_transmit_drop_total{
+    job="node-exporter",
+    device!="lo"
+  }[1m]
+)
+
+
+NETWORK_TOTAL_MIB_PER_SECOND =
+sum by (instance) (
+  rate(
+    node_network_receive_bytes_total{
+      job="node-exporter",
+      device!="lo"
+    }[1m]
+  )
+  +
+  rate(
+    node_network_transmit_bytes_total{
+      job="node-exporter",
+      device!="lo"
+    }[1m]
+  )
+)
+/
+1024
+/
+1024
+
+
+# ============================================================
+# COMPOSITE PRESSURE INDEX
+# Higher value = more resource pressure
+# ============================================================
+
+RESOURCE_PRESSURE_INDEX =
+(
+  (
+    100 -
+    (
+      avg by (instance) (
+        rate(
+          node_cpu_seconds_total{
+            job="node-exporter",
+            mode="idle"
+          }[1m]
+        )
+      ) * 100
+    )
+  ) * 0.4
+)
++
+(
+  (
+    1 -
+    (
+      node_memory_MemAvailable_bytes{
+        job="node-exporter"
+      }
+      /
+      node_memory_MemTotal_bytes{
+        job="node-exporter"
+      }
+    )
+  ) * 100 * 0.4
+)
++
+(
+  (
+    100 *
+    (
+      1 -
+      (
+        node_filesystem_avail_bytes{
+          job="node-exporter",
+          mountpoint="/",
+          fstype!~"tmpfs|overlay|squashfs|nsfs|ramfs"
+        }
+        /
+        node_filesystem_size_bytes{
+          job="node-exporter",
+          mountpoint="/",
+          fstype!~"tmpfs|overlay|squashfs|nsfs|ramfs"
+        }
+      )
+    )
+  ) * 0.2
+)

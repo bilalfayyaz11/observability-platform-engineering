@@ -1,0 +1,64 @@
+# Production baseline queries
+# These require sufficient historical retention before interpretation.
+
+AVERAGE_CPU_24H =
+avg_over_time(
+  (
+    100 -
+    (
+      avg by(instance) (
+        rate(
+          node_cpu_seconds_total{
+            job="node-exporter",
+            mode="idle"
+          }[5m]
+        )
+      ) * 100
+    )
+  )[24h:5m]
+)
+
+
+PEAK_MEMORY_USAGE_24H =
+max_over_time(
+  (
+    (
+      1 -
+      (
+        node_memory_MemAvailable_bytes{
+          job="node-exporter"
+        }
+        /
+        node_memory_MemTotal_bytes{
+          job="node-exporter"
+        }
+      )
+    ) * 100
+  )[24h:5m]
+)
+
+
+AVERAGE_NETWORK_TRAFFIC_24H =
+avg_over_time(
+  (
+    sum by(instance) (
+      rate(
+        node_network_receive_bytes_total{
+          job="node-exporter",
+          device!="lo"
+        }[5m]
+      )
+      +
+      rate(
+        node_network_transmit_bytes_total{
+          job="node-exporter",
+          device!="lo"
+        }[5m]
+      )
+    )
+    /
+    1024
+    /
+    1024
+  )[24h:5m]
+)

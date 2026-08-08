@@ -1,0 +1,7 @@
+metric	value	series_count
+average_cpu_5m	39.48611111111112	1
+peak_memory_5m	36.436210109112736	1
+average_network_mib_5m	0.3483467335171169	1
+peak_cpu_5m	100	1
+peak_iowait_5m	1.0000000000000002	1
+peak_load_5m	4.85	1

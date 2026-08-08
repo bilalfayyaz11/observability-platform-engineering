@@ -1,0 +1,157 @@
+groups:
+
+  - name: performance-alerts
+    interval: 15s
+
+    rules:
+
+      - alert: HighCPUUsage
+
+        expr: |
+          100 - (
+            avg by(instance) (
+              rate(
+                node_cpu_seconds_total{
+                  job="node-exporter",
+                  mode="idle"
+                }[1m]
+              )
+            ) * 100
+          ) > 60
+
+        for: 30s
+
+        labels:
+          severity: warning
+          resource: cpu
+
+        annotations:
+          summary: "High CPU usage detected"
+          description: "CPU usage has remained above 60 percent for at least 30 seconds."
+
+
+      - alert: HighMemoryUsage
+
+        expr: |
+          (
+            1 -
+            (
+              node_memory_MemAvailable_bytes{
+                job="node-exporter"
+              }
+              /
+              node_memory_MemTotal_bytes{
+                job="node-exporter"
+              }
+            )
+          ) * 100 > 60
+
+        for: 30s
+
+        labels:
+          severity: warning
+          resource: memory
+
+        annotations:
+          summary: "High memory usage detected"
+          description: "Memory usage has remained above 60 percent for at least 30 seconds."
+
+
+      - alert: DiskSpaceLow
+
+        expr: |
+          100 *
+          (
+            1 -
+            (
+              node_filesystem_avail_bytes{
+                job="node-exporter",
+                mountpoint="/",
+                fstype!~"tmpfs|overlay|squashfs|nsfs|ramfs"
+              }
+              /
+              node_filesystem_size_bytes{
+                job="node-exporter",
+                mountpoint="/",
+                fstype!~"tmpfs|overlay|squashfs|nsfs|ramfs"
+              }
+            )
+          ) > 90
+
+        for: 2m
+
+        labels:
+          severity: critical
+          resource: filesystem
+
+        annotations:
+          summary: "Root filesystem usage is high"
+          description: "Root filesystem usage has remained above 90 percent."
+
+
+      - alert: HighResourcePressure
+
+        expr: |
+          (
+            (
+              100 -
+              (
+                avg by(instance) (
+                  rate(
+                    node_cpu_seconds_total{
+                      job="node-exporter",
+                      mode="idle"
+                    }[1m]
+                  )
+                ) * 100
+              )
+            ) * 0.4
+          )
+          +
+          (
+            (
+              1 -
+              (
+                node_memory_MemAvailable_bytes{
+                  job="node-exporter"
+                }
+                /
+                node_memory_MemTotal_bytes{
+                  job="node-exporter"
+                }
+              )
+            ) * 100 * 0.4
+          )
+          +
+          (
+            (
+              100 *
+              (
+                1 -
+                (
+                  node_filesystem_avail_bytes{
+                    job="node-exporter",
+                    mountpoint="/",
+                    fstype!~"tmpfs|overlay|squashfs|nsfs|ramfs"
+                  }
+                  /
+                  node_filesystem_size_bytes{
+                    job="node-exporter",
+                    mountpoint="/",
+                    fstype!~"tmpfs|overlay|squashfs|nsfs|ramfs"
+                  }
+                )
+              )
+            ) * 0.2
+          )
+          > 45
+
+        for: 30s
+
+        labels:
+          severity: warning
+          resource: composite
+
+        annotations:
+          summary: "High composite resource pressure"
+          description: "Weighted CPU, memory, and filesystem pressure has remained elevated."

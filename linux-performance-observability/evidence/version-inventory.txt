@@ -1,0 +1,5 @@
+os=Ubuntu 24.04.3 LTS
+prometheus=prometheus, version 3.13.2 (branch: HEAD, revision: bb5dff00cf8fdfbf5c65e0531aa835fa238a43a2)
+node_exporter=node_exporter, version 1.11.1 (branch: HEAD, revision: 0dd664dece3f8319f6bec5a221acd2c7ad13a23d)
+grafana=13.1.1
+stress_ng=stress-ng, version 0.17.06 (gcc 13.2.0, x86_64 Linux 6.14.0-1018-aws)

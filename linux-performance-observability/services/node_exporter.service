@@ -1,0 +1,23 @@
+[Unit]
+Description=Node Exporter Host Performance Metrics
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=node_exporter
+Group=node_exporter
+Type=simple
+
+ExecStart=/usr/local/bin/node_exporter \
+  --web.listen-address=127.0.0.1:9100
+
+Restart=on-failure
+RestartSec=5
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target

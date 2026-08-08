@@ -1,0 +1,4 @@
+query	status	series_count
+average_cpu_24h	success	1
+peak_memory_24h	success	1
+average_network_24h	success	1

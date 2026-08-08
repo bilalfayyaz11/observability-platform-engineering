@@ -1,0 +1,6 @@
+average_cpu_5m	avg_over_time((100 - (avg by(instance) (rate(node_cpu_seconds_total{job="node-exporter",mode="idle"}[1m])) * 100))[5m:15s])
+peak_memory_5m	max_over_time(((1 - (node_memory_MemAvailable_bytes{job="node-exporter"} / node_memory_MemTotal_bytes{job="node-exporter"})) * 100)[5m:15s])
+average_network_mib_5m	avg_over_time((sum by(instance) (rate(node_network_receive_bytes_total{job="node-exporter",device!="lo"}[1m]) + rate(node_network_transmit_bytes_total{job="node-exporter",device!="lo"}[1m])) / 1024 / 1024)[5m:15s])
+peak_cpu_5m	max_over_time((100 - (avg by(instance) (rate(node_cpu_seconds_total{job="node-exporter",mode="idle"}[1m])) * 100))[5m:15s])
+peak_iowait_5m	max_over_time((avg by(instance) (rate(node_cpu_seconds_total{job="node-exporter",mode="iowait"}[1m])) * 100)[5m:15s])
+peak_load_5m	max_over_time(node_load1{job="node-exporter"}[5m])

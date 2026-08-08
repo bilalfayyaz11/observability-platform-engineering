@@ -1,0 +1,17 @@
+[
+  {
+    "labels": {
+      "alertname": "HighCPUUsage",
+      "instance": "127.0.0.1:9100",
+      "resource": "cpu",
+      "severity": "warning"
+    },
+    "annotations": {
+      "description": "CPU usage has remained above 60 percent for at least 30 seconds.",
+      "summary": "High CPU usage detected"
+    },
+    "state": "firing",
+    "activeAt": "2026-08-08T12:30:14.505977739Z",
+    "value": "9.813888888888891e+01"
+  }
+]
