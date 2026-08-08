@@ -1,0 +1,25 @@
+[Unit]
+Description=Alertmanager Structured Webhook Receiver
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+User=alert-webhook
+Group=alert-webhook
+Type=simple
+
+ExecStart=/usr/bin/python3 \
+  /opt/alert-webhook/webhook_receiver.py
+
+Restart=on-failure
+RestartSec=5s
+
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+
+ReadWritePaths=/var/lib/alert-webhook
+
+[Install]
+WantedBy=multi-user.target
