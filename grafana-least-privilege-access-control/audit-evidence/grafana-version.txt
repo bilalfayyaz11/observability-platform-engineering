@@ -1,0 +1,3 @@
+Grafana Version
+===============
+Version 13.1.1 (commit: a9cee6e1724a455676bb6c05eef7fc54aa4b19f4, branch: release-13.1.1#patched)

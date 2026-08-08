@@ -1,0 +1,84 @@
+{
+  "alert.instances.external:read": [
+    "datasources:*"
+  ],
+  "alert.instances:read": [
+    ""
+  ],
+  "alert.notifications.external:read": [
+    "datasources:*"
+  ],
+  "alert.notifications.inhibition-rules:read": [
+    "inhibition-rules:*"
+  ],
+  "alert.notifications.receivers:list": [
+    ""
+  ],
+  "alert.notifications.receivers:read": [
+    "receivers:*"
+  ],
+  "alert.notifications.templates:read": [
+    ""
+  ],
+  "alert.notifications.time-intervals:read": [
+    "",
+    ""
+  ],
+  "alert.rules.external:read": [
+    "datasources:*"
+  ],
+  "alert.rules:read": [
+    "folders:*"
+  ],
+  "alert.silences:read": [
+    "folders:*"
+  ],
+  "annotations:read": [
+    "annotations:type:organization"
+  ],
+  "datasources.id:read": [
+    "datasources:*"
+  ],
+  "datasources:query": [
+    "datasources:*",
+    "datasources:uid:grafana"
+  ],
+  "datasources:read": [
+    "datasources:*",
+    "datasources:uid:grafana"
+  ],
+  "folders:read": [
+    "folders:uid:general",
+    "folders:uid:sharedwithme"
+  ],
+  "library.panels:read": [
+    "folders:uid:general"
+  ],
+  "notifications.alerting.grafana.app/configs:get": [
+    "configs:*"
+  ],
+  "notifications.alerting.grafana.app/routingtrees:get": [
+    "notifications.alerting.grafana.app/routingtrees:uid:user-defined"
+  ],
+  "orgs.quotas:read": [
+    ""
+  ],
+  "orgs:read": [
+    ""
+  ],
+  "playlists:read": [
+    ""
+  ],
+  "plugins.app:access": [
+    "plugins:*"
+  ],
+  "provisioning.repositories:read": [
+    ""
+  ],
+  "provisioning.settings:read": [
+    ""
+  ],
+  "snapshots:read": [
+    ""
+  ]
+}

@@ -1,0 +1,26 @@
+Grafana Access Review - 2026-08-08T17:20:18Z
+==========================================================
+
+Organization Users
+------------------
+admin	admin@localhost	Admin
+bviewer	bob.viewer@company.com	Viewer
+jdeveloper	john.developer@company.com	Viewer
+smanager	sarah.manager@company.com	Viewer
+
+Teams
+-----
+1	Development Team	2
+2	Management Team	2
+3	Operations Team	2
+
+Folders
+-------
+business-metrics	Business Metrics
+development-metrics	Development Metrics
+system-monitoring	System Monitoring
+
+Service Accounts
+----------------
+6	rbac-dashboard	Editor	false
+5	rbac-readonly	Viewer	false

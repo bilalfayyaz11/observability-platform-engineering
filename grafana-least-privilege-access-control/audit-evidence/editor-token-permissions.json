@@ -1,0 +1,232 @@
+{
+  "alert.instances.external:read": [
+    "datasources:*",
+    "datasources:*"
+  ],
+  "alert.instances.external:write": [
+    "datasources:*"
+  ],
+  "alert.instances:create": [
+    ""
+  ],
+  "alert.instances:read": [
+    "",
+    ""
+  ],
+  "alert.instances:write": [
+    ""
+  ],
+  "alert.notifications.external:read": [
+    "datasources:*",
+    "datasources:*"
+  ],
+  "alert.notifications.external:write": [
+    "datasources:*"
+  ],
+  "alert.notifications.inhibition-rules:delete": [
+    "inhibition-rules:*"
+  ],
+  "alert.notifications.inhibition-rules:read": [
+    "inhibition-rules:*",
+    "inhibition-rules:*"
+  ],
+  "alert.notifications.inhibition-rules:write": [
+    "inhibition-rules:*"
+  ],
+  "alert.notifications.receivers.test:create": [
+    "receivers:uid:-",
+    "receivers:*"
+  ],
+  "alert.notifications.receivers:create": [
+    ""
+  ],
+  "alert.notifications.receivers:delete": [
+    "receivers:*"
+  ],
+  "alert.notifications.receivers:list": [
+    "",
+    ""
+  ],
+  "alert.notifications.receivers:read": [
+    "receivers:*",
+    "receivers:*"
+  ],
+  "alert.notifications.receivers:test": [
+    ""
+  ],
+  "alert.notifications.receivers:write": [
+    "receivers:*"
+  ],
+  "alert.notifications.templates.test:write": [
+    ""
+  ],
+  "alert.notifications.templates:delete": [
+    ""
+  ],
+  "alert.notifications.templates:read": [
+    "",
+    ""
+  ],
+  "alert.notifications.templates:write": [
+    ""
+  ],
+  "alert.notifications.time-intervals:delete": [
+    ""
+  ],
+  "alert.notifications.time-intervals:read": [
+    "",
+    "",
+    "",
+    ""
+  ],
+  "alert.notifications.time-intervals:write": [
+    ""
+  ],
+  "alert.provisioning.provenance:write": [
+    ""
+  ],
+  "alert.rules.external:read": [
+    "datasources:*",
+    "datasources:*"
+  ],
+  "alert.rules.external:write": [
+    "datasources:*"
+  ],
+  "alert.rules:create": [
+    "folders:*"
+  ],
+  "alert.rules:delete": [
+    "folders:*"
+  ],
+  "alert.rules:read": [
+    "folders:*",
+    "folders:*"
+  ],
+  "alert.rules:write": [
+    "folders:*"
+  ],
+  "alert.silences:create": [
+    "folders:*"
+  ],
+  "alert.silences:read": [
+    "folders:*",
+    "folders:*"
+  ],
+  "alert.silences:write": [
+    "folders:*"
+  ],
+  "annotations:create": [
+    "annotations:type:organization"
+  ],
+  "annotations:delete": [
+    "annotations:type:organization"
+  ],
+  "annotations:read": [
+    "annotations:type:organization"
+  ],
+  "annotations:write": [
+    "annotations:type:organization"
+  ],
+  "dashboards:create": [
+    "folders:uid:general"
+  ],
+  "datasources.id:read": [
+    "datasources:*"
+  ],
+  "datasources:explore": [
+    ""
+  ],
+  "datasources:query": [
+    "datasources:*",
+    "datasources:uid:grafana"
+  ],
+  "datasources:read": [
+    "datasources:*",
+    "datasources:uid:grafana"
+  ],
+  "folders:create": [
+    "folders:uid:general"
+  ],
+  "folders:read": [
+    "folders:uid:general",
+    "folders:uid:general",
+    "folders:uid:general",
+    "folders:uid:sharedwithme"
+  ],
+  "library.panels:create": [
+    "folders:uid:general",
+    "folders:uid:general"
+  ],
+  "library.panels:delete": [
+    "folders:uid:general"
+  ],
+  "library.panels:read": [
+    "folders:uid:general",
+    "folders:uid:general"
+  ],
+  "library.panels:write": [
+    "folders:uid:general"
+  ],
+  "live:push": [
+    ""
+  ],
+  "notifications.alerting.grafana.app/configs:get": [
+    "configs:*"
+  ],
+  "notifications.alerting.grafana.app/routingtrees:create": [
+    ""
+  ],
+  "notifications.alerting.grafana.app/routingtrees:delete": [
+    "notifications.alerting.grafana.app/routingtrees:uid:user-defined"
+  ],
+  "notifications.alerting.grafana.app/routingtrees:get": [
+    "notifications.alerting.grafana.app/routingtrees:uid:user-defined"
+  ],
+  "notifications.alerting.grafana.app/routingtrees:update": [
+    "notifications.alerting.grafana.app/routingtrees:uid:user-defined"
+  ],
+  "orgs.quotas:read": [
+    ""
+  ],
+  "orgs:read": [
+    ""
+  ],
+  "playlists:read": [
+    "",
+    ""
+  ],
+  "playlists:write": [
+    ""
+  ],
+  "plugins.app:access": [
+    "plugins:*"
+  ],
+  "provisioning.jobs:create": [
+    ""
+  ],
+  "provisioning.jobs:delete": [
+    ""
+  ],
+  "provisioning.jobs:read": [
+    "",
+    ""
+  ],
+  "provisioning.jobs:write": [
+    ""
+  ],
+  "provisioning.repositories:read": [
+    ""
+  ],
+  "provisioning.settings:read": [
+    ""
+  ],
+  "snapshots:create": [
+    ""
+  ],
+  "snapshots:delete": [
+    ""
+  ],
+  "snapshots:read": [
+    ""
+  ]
+}

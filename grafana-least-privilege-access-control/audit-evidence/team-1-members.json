@@ -1,0 +1,32 @@
+[
+  {
+    "uid": "dfukyq7uojegwa",
+    "orgId": 1,
+    "teamId": 1,
+    "teamUID": "cfukyq7tx2io0a",
+    "userId": 1,
+    "userUID": "efukyo2kw47pce",
+    "auth_module": "",
+    "email": "admin@localhost",
+    "name": "",
+    "login": "admin",
+    "avatarUrl": "/public/img/user_profile.png",
+    "labels": [],
+    "permission": 4
+  },
+  {
+    "uid": "cfukyq8becxs0f",
+    "orgId": 1,
+    "teamId": 1,
+    "teamUID": "cfukyq7tx2io0a",
+    "userId": 2,
+    "userUID": "ffukyq764jc3ke",
+    "auth_module": "",
+    "email": "john.developer@company.com",
+    "name": "John Developer",
+    "login": "jdeveloper",
+    "avatarUrl": "/public/img/user_profile.png",
+    "labels": [],
+    "permission": 0
+  }
+]

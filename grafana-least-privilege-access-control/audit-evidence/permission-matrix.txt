@@ -1,0 +1,12 @@
+Grafana Access-Control Matrix
+
+                           Development Metrics   Business Metrics   System Monitoring
+Development Team          EDIT                  VIEW               VIEW
+Management Team           VIEW                  EDIT               VIEW
+Operations Team           NO ACCESS             VIEW               EDIT
+
+Organization baseline:
+All test users = Viewer
+
+Elevated privileges:
+Granted only through team-scoped folder permissions.

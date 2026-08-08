@@ -1,0 +1,32 @@
+[
+  {
+    "uid": "bfukyq864kni8e",
+    "orgId": 1,
+    "teamId": 3,
+    "teamUID": "cfukyq85klgqoe",
+    "userId": 1,
+    "userUID": "efukyo2kw47pce",
+    "auth_module": "",
+    "email": "admin@localhost",
+    "name": "",
+    "login": "admin",
+    "avatarUrl": "/public/img/user_profile.png",
+    "labels": [],
+    "permission": 4
+  },
+  {
+    "uid": "ffukyq8ge5mo0f",
+    "orgId": 1,
+    "teamId": 3,
+    "teamUID": "cfukyq85klgqoe",
+    "userId": 4,
+    "userUID": "bfukyq7ggm7lse",
+    "auth_module": "",
+    "email": "bob.viewer@company.com",
+    "name": "Bob Viewer",
+    "login": "bviewer",
+    "avatarUrl": "/public/img/user_profile.png",
+    "labels": [],
+    "permission": 0
+  }
+]

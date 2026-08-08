@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Development Team",
+    "email": "development-team@company.com",
+    "memberCount": 2
+  },
+  {
+    "id": 2,
+    "name": "Management Team",
+    "email": "management-team@company.com",
+    "memberCount": 2
+  },
+  {
+    "id": 3,
+    "name": "Operations Team",
+    "email": "operations-team@company.com",
+    "memberCount": 2
+  }
+]

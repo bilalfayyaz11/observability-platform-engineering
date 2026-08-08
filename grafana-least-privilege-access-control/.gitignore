@@ -1,0 +1,7 @@
+test-users.env
+service-account-tokens.env
+resource-ids.env
+*.backup
+*.db
+*.sqlite
+*.sqlite3

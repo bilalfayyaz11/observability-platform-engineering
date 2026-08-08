@@ -1,0 +1,26 @@
+[
+  {
+    "userId": 1,
+    "login": "admin",
+    "email": "admin@localhost",
+    "role": "Admin"
+  },
+  {
+    "userId": 4,
+    "login": "bviewer",
+    "email": "bob.viewer@company.com",
+    "role": "Viewer"
+  },
+  {
+    "userId": 2,
+    "login": "jdeveloper",
+    "email": "john.developer@company.com",
+    "role": "Viewer"
+  },
+  {
+    "userId": 3,
+    "login": "smanager",
+    "email": "sarah.manager@company.com",
+    "role": "Viewer"
+  }
+]

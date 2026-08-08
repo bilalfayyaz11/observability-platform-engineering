@@ -1,0 +1,31 @@
+Grafana Access Control Validation
+
+Developer: jdeveloper
+- Development Metrics: EDIT expected
+- Business Metrics: VIEW expected
+- System Monitoring: VIEW expected
+- Grafana admin functions: BLOCKED expected
+- Data source creation: BLOCKED expected
+
+Manager: smanager
+- Development Metrics: VIEW expected
+- Business Metrics: EDIT expected
+- System Monitoring: VIEW expected
+- Grafana admin functions: BLOCKED expected
+- Data source creation: BLOCKED expected
+
+Operations: bviewer
+- Development Metrics: NO ACCESS expected
+- Business Metrics: VIEW expected
+- System Monitoring: EDIT expected
+- Grafana admin functions: BLOCKED expected
+- Data source creation: BLOCKED expected
+
+Authorization model:
+All users have baseline organization role Viewer.
+Elevated Edit access is granted only through team-scoped folder permissions.
+
+Source inconsistency noted:
+The supplied material gives Development Team VIEW access to System Monitoring
+in its folder-permission matrix, while its later user test says the developer
+should have NO access. This implementation follows the explicit permission matrix.
