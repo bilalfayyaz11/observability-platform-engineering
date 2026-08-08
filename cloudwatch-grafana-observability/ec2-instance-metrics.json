@@ -1,0 +1,171 @@
+{
+  "dashboard": {
+    "id": null,
+    "uid": "localstack-ec2-metrics",
+    "title": "EC2 Instance Metrics",
+    "tags": [
+      "cloudwatch",
+      "localstack",
+      "ec2"
+    ],
+    "timezone": "browser",
+    "schemaVersion": 42,
+    "version": 0,
+    "refresh": "30s",
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "panels": [
+      {
+        "id": 1,
+        "type": "timeseries",
+        "title": "CPU Utilization",
+        "datasource": {
+          "type": "cloudwatch",
+          "uid": "eful78knzwkqoc"
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100
+          },
+          "overrides": []
+        },
+        "targets": [
+          {
+            "refId": "A",
+            "datasource": {
+              "type": "cloudwatch",
+              "uid": "eful78knzwkqoc"
+            },
+            "queryMode": "Metrics",
+            "region": "us-east-1",
+            "namespace": "AWS/EC2",
+            "metricName": "CPUUtilization",
+            "statistic": "Average",
+            "period": "5",
+            "dimensions": {
+              "InstanceId": "i-1234567890abcdef0"
+            },
+            "matchExact": true,
+            "metricQueryType": 0,
+            "id": "cpu",
+            "label": "CPU Utilization"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "type": "stat",
+        "title": "Current Memory Utilization",
+        "datasource": {
+          "type": "cloudwatch",
+          "uid": "eful78knzwkqoc"
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "percent",
+            "min": 0,
+            "max": 100
+          },
+          "overrides": []
+        },
+        "options": {
+          "reduceOptions": {
+            "values": false,
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": ""
+          },
+          "orientation": "auto",
+          "textMode": "auto",
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto"
+        },
+        "targets": [
+          {
+            "refId": "A",
+            "datasource": {
+              "type": "cloudwatch",
+              "uid": "eful78knzwkqoc"
+            },
+            "queryMode": "Metrics",
+            "region": "us-east-1",
+            "namespace": "System/Linux",
+            "metricName": "MemoryUtilization",
+            "statistic": "Average",
+            "period": "5",
+            "dimensions": {
+              "InstanceId": "i-1234567890abcdef0"
+            },
+            "matchExact": true,
+            "metricQueryType": 0,
+            "id": "memory",
+            "label": "Memory Utilization"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "type": "timeseries",
+        "title": "Network In",
+        "datasource": {
+          "type": "cloudwatch",
+          "uid": "eful78knzwkqoc"
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 24,
+          "x": 0,
+          "y": 9
+        },
+        "fieldConfig": {
+          "defaults": {
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "targets": [
+          {
+            "refId": "A",
+            "datasource": {
+              "type": "cloudwatch",
+              "uid": "eful78knzwkqoc"
+            },
+            "queryMode": "Metrics",
+            "region": "us-east-1",
+            "namespace": "AWS/EC2",
+            "metricName": "NetworkIn",
+            "statistic": "Average",
+            "period": "5",
+            "dimensions": {
+              "InstanceId": "i-1234567890abcdef0"
+            },
+            "matchExact": true,
+            "metricQueryType": 0,
+            "id": "network",
+            "label": "Network In"
+          }
+        ]
+      }
+    ]
+  },
+  "overwrite": true,
+  "message": "Provision EC2 LocalStack CloudWatch dashboard"
+}

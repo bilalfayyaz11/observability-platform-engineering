@@ -1,0 +1,17 @@
+{
+  "name": "LocalStack CloudWatch",
+  "type": "cloudwatch",
+  "access": "proxy",
+  "url": "http://127.0.0.1:4566",
+  "isDefault": true,
+  "jsonData": {
+    "authType": "keys",
+    "defaultRegion": "us-east-1",
+    "endpoint": "http://127.0.0.1:4566",
+    "customMetricsNamespaces": "System/Linux"
+  },
+  "secureJsonData": {
+    "accessKey": "test",
+    "secretKey": "test"
+  }
+}

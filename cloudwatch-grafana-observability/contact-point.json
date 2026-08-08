@@ -1,0 +1,9 @@
+{
+  "name": "lab-webhook",
+  "type": "webhook",
+  "settings": {
+    "url": "http://127.0.0.1:9999/alert",
+    "httpMethod": "POST"
+  },
+  "disableResolveMessage": false
+}
