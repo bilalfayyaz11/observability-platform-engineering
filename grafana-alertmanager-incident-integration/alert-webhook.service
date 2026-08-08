@@ -1,0 +1,21 @@
+[Unit]
+Description=Alertmanager Webhook Receiver
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=alert_webhook
+Group=alert_webhook
+Type=simple
+
+ExecStart=/opt/alert-webhook/venv/bin/python \
+  /opt/alert-webhook/webhook_server.py
+
+Restart=on-failure
+RestartSec=5s
+
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
