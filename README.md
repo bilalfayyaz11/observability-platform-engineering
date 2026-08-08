@@ -1,85 +1,76 @@
 # Observability Platform Engineering
 
-Production-focused implementations for monitoring, logging, telemetry, alerting, and reliability engineering across Linux infrastructure and distributed applications.
+A collection of production-oriented implementations covering monitoring, metrics, alerting, performance analysis, logging, reliability, CI/CD observability, and infrastructure automation.
+
+## Core Areas
+
+- Prometheus architecture and administration
+- PromQL engineering and query validation
+- Alertmanager routing and inhibition
+- Grafana performance visualization
+- Linux infrastructure observability
+- Kubernetes-native monitoring
+- CI/CD observability
+- Metrics cardinality and retention engineering
+- Long-term metrics storage with Thanos
+- Centralized logging
+- Infrastructure automation with Terraform
+- Secure monitoring architectures
+- Failure diagnostics and recovery
 
 ## Implementations
 
-| # | Implementation | Technologies | Level |
-|---|----------------|--------------|-------|
-| 1 | [Prometheus Host and Application Monitoring](./prometheus-host-application-monitoring/) | Prometheus, Node Exporter, Python, PromQL, systemd | Advanced |
-| 2 | [Prometheus Alert Routing](./prometheus-alert-routing/) | Prometheus, Alertmanager, Node Exporter, PromQL, Python, systemd | Advanced |
-| 3 | [Centralized Log Pipeline](./centralized-log-pipeline/) | Elasticsearch, Logstash, Filebeat, Python, Grok, systemd | Advanced |
+### Alerting
 
-## Engineering Focus
+- `advanced-alert-routing`
+- `prometheus-alert-routing`
+- `prometheus-alerting-architecture`
+- `prometheus-alerting-notification-pipeline`
 
-This repository contains production-oriented observability implementations that demonstrate monitoring, centralized logging, telemetry collection, alert routing, and operational reliability practices commonly used by Platform Engineering, SRE, DevOps, and Infrastructure teams.
+### Prometheus Engineering
 
-Each implementation is designed as a standalone deployment that emphasizes reproducibility, service management, configuration validation, troubleshooting, Linux administration, and production-ready operational workflows.
+- `prometheus-host-application-monitoring`
+- `prometheus-multi-exporter-observability`
+- `prometheus-metric-type-engineering`
+- `prometheus-metric-cardinality-engineering`
+- `prometheus-recording-rule-performance`
+- `prometheus-pushgateway-workloads`
+- `prometheus-tsdb-retention`
+- `prometheus-secure-access`
+- `prometheus-failure-diagnostics`
+- `promql-query-validation-engine`
 
-## Coverage
+### Distributed Observability
 
-- Infrastructure Monitoring
-- Application Monitoring
-- Metrics Collection
-- Alert Routing
-- Centralized Logging
-- Log Collection
-- Log Processing
-- Log Enrichment
-- Log Search
-- Operational Telemetry
-- Incident Investigation
-- Linux Service Management
-- Configuration Validation
-- Production Troubleshooting
+- `hierarchical-prometheus-federation`
+- `kubernetes-native-prometheus-observability`
+- `thanos-long-term-metrics-storage`
 
-## Repository Structure
+### Performance and Delivery
 
-    observability-platform-engineering/
-    ├── prometheus-host-application-monitoring/
-    ├── prometheus-alert-routing/
-    ├── centralized-log-pipeline/
-    └── README.md
+- `linux-performance-observability`
+- `jenkins-cicd-observability`
+- `docker-nginx-blue-green-delivery`
+- `python-ci-quality-gates`
+
+### Logging and Infrastructure
+
+- `centralized-log-pipeline`
+- `terraform-docker-infrastructure`
 
 ## Technology Stack
 
-- Prometheus
-- Alertmanager
-- Node Exporter
-- Elasticsearch
-- Logstash
-- Filebeat
-- Python
-- PromQL
-- Grok
-- Linux
-- systemd
+Prometheus • Alertmanager • Grafana • Node Exporter • Thanos • Kubernetes • Docker • Jenkins • Terraform • Python • Linux • GitHub Actions • Elastic Stack
 
-## Skills Demonstrated
+## Focus
 
-- Observability Platform Engineering
-- Infrastructure Monitoring
-- Centralized Logging
-- Metrics Engineering
-- Alert Engineering
-- Elastic Stack Administration
-- Prometheus Administration
-- Log Pipeline Development
-- Log Parsing and Transformation
-- Linux Systems Administration
-- Service Hardening
-- Configuration Management
-- Production Validation
-- Incident Response Support
-- Troubleshooting
+The repository demonstrates practical observability engineering with an emphasis on:
 
-## Future Roadmap
-
-Additional production-grade implementations will continue expanding this repository with distributed tracing, dashboarding, telemetry pipelines, synthetic monitoring, service discovery, OpenTelemetry, Kibana visualization, Grafana dashboards, and automated incident response workflows.
-
-
-## Infrastructure as Code
-
-| What Was Built | Key Technologies | Level |
-|----------------|------------------|-------|
-| [Terraform-Managed Docker Infrastructure](./terraform-docker-infrastructure) | Terraform, HCL, Docker, Nginx, Apache, Networking, Persistent Storage, State Management | Advanced |
+- reproducible infrastructure
+- measurable system behavior
+- validated monitoring configurations
+- alert lifecycle testing
+- failure detection and recovery
+- performance analysis
+- secure service operation
+- evidence-driven troubleshooting
